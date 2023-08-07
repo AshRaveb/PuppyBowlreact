@@ -9,6 +9,23 @@ export default function AllPlayers({ APIURL }) {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  async function handleDelete(id) {
+    try {
+        const response = await fetch(`${APIURL}players/${id}/`,
+            {
+                method: 'DELETE'
+            });
+        const result = await response.json();
+
+        alert('Delete Success')
+       
+        location.reload()
+
+    } catch (error) {
+console.log(error);
+    }
+}
+
 
   useEffect(() => {
     async function fetchAllPlayers() {
@@ -36,6 +53,8 @@ export default function AllPlayers({ APIURL }) {
         <div className="PlayerCard" key={player.id}>
           <p>{player.name}</p>
           <button onClick={() => navigate(`/players/${player.id}`)}>Details</button>
+          <button onClick={() => handleDelete(player.id)}>Delete</button>
+
         </div>
       ))}
     </div>
