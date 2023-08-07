@@ -16,9 +16,10 @@ export default function App() {
     <>
      <NavBar />
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<h1>PuppyBowl</h1>} />
         <Route path="/players" element={<AllPlayers APIURL={APIURL} />} />
         <Route path="/players/:id" element={<SinglePlayer APIURL={APIURL} />} />
+        <Route path="/newplayerform"element={<NewPlayerForm APIURL={APIURL}/>}/>
       </Routes>
     </>
   )
